@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "881788650274",
+    "project_id": "janaushadi-179e6",
+    "storage_bucket": "janaushadi-179e6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881788650274:android:b6d88d72ee3fbc5647db7b",
+        "android_client_info": {
+          "package_name": "com.example.ble_attendance"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfTmOv2rAyUktLVGoU-HUhFCVKyTYSE1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
