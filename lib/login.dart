@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'home.dart';
+import 'student_screen.dart';
+import 'teacher.dart';
 
 class sdttF extends StatefulWidget {
   const sdttF({super.key});
@@ -17,6 +18,7 @@ class _sdttState extends State<sdttF> {
   // Google Sign-In instance
   final GoogleSignIn googleSignIn = GoogleSignIn.instance;
 
+  String selectedRole = 'Student';
   bool isGoogleInitialized = false;
   bool isLoading = false;
 
@@ -173,6 +175,42 @@ class _sdttState extends State<sdttF> {
 
               const SizedBox(height: 20),
 
+              const SizedBox(height: 15),
+
+              Text(
+                'Select role',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+
+              const SizedBox(height: 10),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ChoiceChip(
+                    label: const Text('Student'),
+                    selected: selectedRole == 'Student',
+                    onSelected: (_) {
+                      setState(() {
+                        selectedRole = 'Student';
+                      });
+                    },
+                  ),
+                  const SizedBox(width: 10),
+                  ChoiceChip(
+                    label: const Text('Teacher'),
+                    selected: selectedRole == 'Teacher',
+                    onSelected: (_) {
+                      setState(() {
+                        selectedRole = 'Teacher';
+                      });
+                    },
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 20),
+
               // Google Login
               SizedBox(
                 width: double.infinity,
@@ -185,18 +223,26 @@ class _sdttState extends State<sdttF> {
                           final UserCredential? user = await signInWithGoogle();
 
                           if (user != null && mounted) {
+                            final Widget nextScreen = selectedRole == 'Teacher'
+                                ? const Teacher()
+                                : const StudentAttendanceScreen();
+
                             Navigator.pushReplacement(
                               context,
-                              MaterialPageRoute(builder: (context) => sdtt()),
+                              MaterialPageRoute(
+                                builder: (context) => nextScreen,
+                              ),
                             );
                           }
                         },
 
                   child: isLoading
                       ? const CircularProgressIndicator()
-                      : const Text(
-                          'LOGIN WITH GOOGLE',
-                          style: TextStyle(fontSize: 16),
+                      : Text(
+                          selectedRole == 'Teacher'
+                              ? 'LOGIN AS TEACHER'
+                              : 'LOGIN AS STUDENT',
+                          style: const TextStyle(fontSize: 16),
                         ),
                 ),
               ),
