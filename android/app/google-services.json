@@ -12,7 +12,20 @@
           "package_name": "com.example.ble_attendance"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "881788650274-p8fke0o6jc23dgoicpr1abh605bdj8c7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ble_attendance",
+            "certificate_hash": "69de6312ec7a5359e8815661585419d8ff6c6f8b"
+          }
+        },
+        {
+          "client_id": "881788650274-ni2ttl14ji24dlj8envm1lfa8k1s8h87.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCfTmOv2rAyUktLVGoU-HUhFCVKyTYSE1w"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "881788650274-ni2ttl14ji24dlj8envm1lfa8k1s8h87.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "881788650274-l48fh5q5dh98qaq6fgllt77rgmqvn2p4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bleAttendance"
+              }
+            }
+          ]
         }
       }
     }

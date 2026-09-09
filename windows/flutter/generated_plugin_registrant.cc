@@ -8,6 +8,7 @@
 
 #include <firebase_auth/firebase_auth_plugin_c_api.h>
 #include <firebase_core/firebase_core_plugin_c_api.h>
+#include <flutter_blue_plus_winrt/flutter_blue_plus_plugin.h>
 #include <local_auth_windows/local_auth_plugin.h>
 
 void RegisterPlugins(flutter::PluginRegistry* registry) {
@@ -15,6 +16,8 @@ void RegisterPlugins(flutter::PluginRegistry* registry) {
       registry->GetRegistrarForPlugin("FirebaseAuthPluginCApi"));
   FirebaseCorePluginCApiRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("FirebaseCorePluginCApi"));
+  FlutterBluePlusPluginRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("FlutterBluePlusPlugin"));
   LocalAuthPluginRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("LocalAuthPlugin"));
 }
