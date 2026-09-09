@@ -11,7 +11,7 @@ class sdtt extends StatefulWidget {
 
 class _sdttState extends State<sdtt> {
   List<ScanResult> devicesList = [];
-  bool isScanning = false;
+  bool isScanning = true;
   bool yess = false;
 
   final auth = LocalAuthentication();
