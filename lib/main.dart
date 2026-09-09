@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import "login.dart";
 import 'firebase_options.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'teacher.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +21,6 @@ class mainb extends StatefulWidget {
 class _sdttState extends State<mainb> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: sdttF());
+    return const MaterialApp(home: sdttF());
   }
 }

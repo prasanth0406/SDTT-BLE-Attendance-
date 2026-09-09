@@ -1,7 +1,9 @@
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class sdtt extends StatefulWidget {
   const sdtt({super.key});
@@ -16,6 +18,24 @@ class _sdttState extends State<sdtt> {
   bool yess = false;
 
   final auth = LocalAuthentication();
+
+  Future<void> requestBluetoothPermissions() async {
+    if (!Platform.isAndroid) return;
+
+    final permissions = <Permission>[
+      Permission.bluetooth,
+      Permission.bluetoothConnect,
+      Permission.bluetoothScan,
+      Permission.locationWhenInUse,
+    ];
+
+    for (final permission in permissions) {
+      final status = await permission.request();
+      if (status.isDenied || status.isPermanentlyDenied) {
+        debugPrint('Bluetooth permission denied: ${permission.toString()}');
+      }
+    }
+  }
 
   Future<void> auther() async {
     final prasanth = await auth.authenticate(
@@ -35,6 +55,7 @@ class _sdttState extends State<sdtt> {
 
   Future<void> scanBLE() async {
     try {
+      await requestBluetoothPermissions();
       final bluetoothState = await FlutterBluePlus.adapterState.first;
 
       if (bluetoothState != BluetoothAdapterState.on) {
